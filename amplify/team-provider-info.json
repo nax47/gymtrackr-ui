@@ -1,15 +1,20 @@
 {
   "prod": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-gymtrackrui-prod-190312-authRole",
-      "UnauthRoleArn": "arn:aws:iam::263327493671:role/amplify-gymtrackrui-prod-190312-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::263327493671:role/amplify-gymtrackrui-prod-190312-authRole",
-      "Region": "ap-northeast-1",
-      "DeploymentBucketName": "amplify-gymtrackrui-prod-190312-deployment",
-      "UnauthRoleName": "amplify-gymtrackrui-prod-190312-unauthRole",
-      "StackName": "amplify-gymtrackrui-prod-190312",
-      "StackId": "arn:aws:cloudformation:ap-northeast-1:263327493671:stack/amplify-gymtrackrui-prod-190312/fe07f460-3370-11eb-b030-0ed2ba4a9f78",
-      "AmplifyAppId": "d1dtcl0kqhilef"
+      "AuthRoleName": "amplify-gymtrackrui-prod-233442-authRole",
+      "UnauthRoleArn": "arn:aws:iam::263327493671:role/amplify-gymtrackrui-prod-233442-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::263327493671:role/amplify-gymtrackrui-prod-233442-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-gymtrackrui-prod-233442-deployment",
+      "UnauthRoleName": "amplify-gymtrackrui-prod-233442-unauthRole",
+      "StackName": "amplify-gymtrackrui-prod-233442",
+      "StackId": "arn:aws:cloudformation:us-east-1:263327493671:stack/amplify-gymtrackrui-prod-233442/ea748d70-3396-11eb-9673-0a479dbf9bdf",
+      "AmplifyAppId": "dbg8talqa3qze"
+    },
+    "categories": {
+      "auth": {
+        "gymtrackrui155b27d1": {}
+      }
     }
   }
 }

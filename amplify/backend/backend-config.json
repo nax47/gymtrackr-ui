@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "gymtrackrui155b27d1": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
