@@ -4,9 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import 'hammerjs';
-import Amplify, {Auth, API} from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
+import {CognitoAccessToken,CognitoIdToken,CognitoRefreshToken,CognitoUserSession} from 'amazon-cognito-identity-js';
 
 if (environment.production) {
   enableProdMode();
