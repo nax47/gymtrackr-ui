@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import config from '../../assets/config.json'
+import { Router } from '@angular/router';
+import { AppDataService } from '../app-data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,10 @@ import config from '../../assets/config.json'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(private router: Router, private appData: AppDataService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
+    if(this.appData.isLoggedIn) { this.router.navigateByUrl("/track") }
   }
 
   signIn(): void {

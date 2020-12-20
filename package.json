@@ -25,6 +25,7 @@
     "amazon-cognito-identity-js": "^4.5.5",
     "aws-amplify": "^3.3.11",
     "hammerjs": "^2.0.8",
+    "parse-link-header": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
