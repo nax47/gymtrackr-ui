@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-content>
+        <h3>Add exercises to your new routine:</h3>
+
+        <div [formGroup]="appData.newRoutineForm">
+            <div formArrayName="exercises">
+                <div *ngFor="let exercise of exerciseArray.controls; let i=index" [formGroupName]="i">
+                    <mat-form-field>
+                        <input matInput placeholder="Exercise Name" formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type = "number" matInput placeholder="Weight" formControlName="weight">
+                    </mat-form-field>
+                    <button mat-raised-button color = "warn" (click)="deleteExercise(i)">Delete</button> 
+                </div>
+            </div>
+            <button mat-raised-button color = "primary" (click)="addExercise()">Add Exercise</button>   
+        </div>
+    </mat-card-content>
+</mat-card>

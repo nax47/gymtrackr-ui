@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppDataService } from './app-data.service';
+import { AppDataService } from './services/app-data.service';
 
 @Component({
   selector: 'app-root',

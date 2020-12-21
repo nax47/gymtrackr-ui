@@ -1,5 +1,21 @@
 <mat-card>
     <mat-card-content>
-
+        <div *ngIf="appData.isLoading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!appData.hasRoutines && !appData.isLoading">
+            <h3>Looks like you do not have any workout routines saved yet!</h3>
+            <button mat-raised-button color='primary' (click)='openDialog()'> Click here to get started</button>
+        </div>
+        <div *ngIf="appData.hasRoutines && !appData.isLoading">
+            <h3>Welcome back! Here are your saved workout routines:</h3>
+            <mat-action-list>
+                <div *ngFor="let routine of appData.routineList">
+                    <button mat-list-item (click)="routineClick(routine)">{{routine}}</button>
+                </div>
+            </mat-action-list>
+            <h3>OR</h3>
+            <button mat-raised-button color='primary' (click)='openDialog()'> Click here to create a new routine</button>
+        </div>
     </mat-card-content>
 </mat-card>

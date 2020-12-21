@@ -3,5 +3,6 @@
     "cognitoClientSecret": "1g272nvlcpcnj28rtrj1d12jrftu4v70c1bbo50vaa6l5rofngc",
     "cognitoTokenURL": "https://gymtrackr.auth.us-east-1.amazoncognito.com/oauth2/token",
     "cognitoUserInfoURL": "https://gymtrackr.auth.us-east-1.amazoncognito.com/oauth2/userInfo",
-    "cognitoSignInURL": "https://gymtrackr.auth.us-east-1.amazoncognito.com/login?client_id=60jq1jccokrcmocgimovdse8h1&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+profile&redirect_uri=http://localhost:4200/callback" 
+    "cognitoSignInURL": "https://gymtrackr.auth.us-east-1.amazoncognito.com/login?client_id=60jq1jccokrcmocgimovdse8h1&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+profile&redirect_uri=http://localhost:4200/callback",
+    "apiGatewayURL": "https://api.nakultalwar.com/gymtrackr/"
 }

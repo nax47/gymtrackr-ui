@@ -10,3 +10,7 @@ mat-card {
     justify-content: center;
     align-items: center;
   }
+
+  mat-spinner {
+    margin: 2em auto;
+}

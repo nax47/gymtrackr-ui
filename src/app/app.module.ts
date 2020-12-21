@@ -10,19 +10,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule} from '@angular/material/icon';
+import { MatInputModule} from '@angular/material/input';
+import { MatDividerModule} from '@angular/material/divider';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatListModule} from '@angular/material/list';
+import { MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CallbackComponent } from './callback/callback.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NewRoutineDialogComponent } from './new-routine-dialog/new-routine-dialog.component';
+import { NewRoutineComponent } from './new-routine/new-routine.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    CallbackComponent
+    CallbackComponent,
+    NewRoutineDialogComponent,
+    NewRoutineComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +43,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatDividerModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NewRoutineDialogComponent]
 })
 export class AppModule { }

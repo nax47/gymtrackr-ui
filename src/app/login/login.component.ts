@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import config from '../../assets/config.json'
 import { Router } from '@angular/router';
-import { AppDataService } from '../app-data.service';
+import { AppDataService } from '../services/app-data.service';
 
 @Component({
   selector: 'app-login',

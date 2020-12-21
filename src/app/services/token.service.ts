@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import config from '../assets/config.json'
-import { AuthResponse } from './auth-response';
-import { UserInfoResponse } from './user-info-response';
+import config from '../../assets/config.json'
+import { AuthResponse } from '../models/auth-response';
+import { UserInfoResponse } from '../models/user-info-response';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class TokenService {
                                           observe: 'response'});
   }
 
-  getUserInfo(accessToken: String): Observable<HttpResponse<UserInfoResponse>>{
+  getUserInfo(accessToken: string): Observable<HttpResponse<UserInfoResponse>>{
     return this.http.get<UserInfoResponse>(config.cognitoUserInfoURL, 
       {headers: new HttpHeaders()
                     .set('Authorization', 'Bearer '+accessToken),

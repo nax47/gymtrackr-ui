@@ -1,0 +1,16 @@
+<h3>Enter a name for your new routine</h3>
+
+<mat-dialog-content [formGroup]="appData.newRoutineForm">
+    <mat-form-field>
+        <input matInput placeholder="Routine Name" formControlName="workout_id">
+        <mat-error *ngIf="workout_id.invalid && workout_id.touched">
+            Please enter a name
+        </mat-error>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button color="primary" [disabled]="workout_id.invalid" (click)="saveDialog()">Save</button>
+</mat-dialog-actions>
+
