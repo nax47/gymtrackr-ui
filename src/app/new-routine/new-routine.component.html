@@ -7,14 +7,19 @@
                 <div *ngFor="let exercise of exerciseArray.controls; let i=index" [formGroupName]="i">
                     <mat-form-field>
                         <input matInput placeholder="Exercise Name" formControlName="name">
+                        <mat-error *ngIf="exercise.get('name').invalid && exercise.get('name').touched">
+                            Please enter an exercise name
+                        </mat-error>
                     </mat-form-field>
-                    <mat-form-field>
+                   <!--<mat-form-field>
                         <input type = "number" matInput placeholder="Weight" formControlName="weight">
-                    </mat-form-field>
+                    </mat-form-field>-->
                     <button mat-raised-button color = "warn" (click)="deleteExercise(i)">Delete</button> 
                 </div>
             </div>
+            <br> 
             <button mat-raised-button color = "primary" (click)="addExercise()">Add Exercise</button>   
+            <button class = "space-left" mat-raised-button color = "primary" [disabled]="exerciseArray.invalid" (click)="saveRoutine()">Save</button>  
         </div>
     </mat-card-content>
 </mat-card>

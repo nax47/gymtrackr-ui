@@ -11,6 +11,19 @@ mat-card {
     align-items: center;
   }
 
-  .space-left{
-      margin-left: 20px;
+  table {
+    width: 100%;
+    align-items: left;
   }
+
+ .mat-column-name {
+   flex: 0 0 70%;
+ }
+
+ .mat-column-weight {
+  flex: 0 0 15%;
+}
+
+.space-left{
+  margin-left: 20px;
+}

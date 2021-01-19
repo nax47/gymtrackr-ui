@@ -14,6 +14,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatDividerModule} from '@angular/material/divider';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatListModule} from '@angular/material/list';
+import { MatTableModule} from '@angular/material/table';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -23,6 +24,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewRoutineDialogComponent } from './new-routine-dialog/new-routine-dialog.component';
 import { NewRoutineComponent } from './new-routine/new-routine.component';
+import { EditRoutineComponent } from './edit-routine/edit-routine.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { NewRoutineComponent } from './new-routine/new-routine.component';
     LoginComponent,
     CallbackComponent,
     NewRoutineDialogComponent,
-    NewRoutineComponent
+    NewRoutineComponent,
+    EditRoutineComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { NewRoutineComponent } from './new-routine/new-routine.component';
     MatDividerModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

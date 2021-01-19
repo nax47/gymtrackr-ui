@@ -43,8 +43,20 @@ export class DashboardComponent implements OnInit {
     /////////
   }
 
-  routineClick(routine: String): void{
-    console.log (routine);
+  routineClick(routine: string): void{
+    this.appData.isLoading = true;
+
+    this.backendService.getRoutine(this.appData.email,routine,this.appData.accessToken)
+    .subscribe((response) => {
+      const keys = response.headers.keys();
+      this.headers = keys.map(key =>
+          '${key}: ${response.headers.get(key)}');
+      this.appData.currentRoutine = response.body.Item.workout_id;
+      this.appData.exerciseList = response.body.Item.exercises;
+      this.appData.isLoading = false;
+    });
+    
+    this.router.navigateByUrl("/track/edit");
   }
 
   openDialog(): void{

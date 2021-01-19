@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ExerciseList } from '../exercise-list';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class AppDataService {
 
   private _newRoutineForm: FormGroup;
   private _isCreatingNewRoutine: boolean;
+
+  private _exerciseList: any[];
+  private _currentRoutine: string;
 
   constructor() { }
 
@@ -106,5 +110,19 @@ export class AppDataService {
   }
   public set isCreatingNewRoutine(value: boolean) {
     this._isCreatingNewRoutine = value;
+  }
+
+  public get exerciseList(): any[] {
+    return this._exerciseList;
+  }
+  public set exerciseList(value: any[]) {
+    this._exerciseList = value;
+  }
+
+  public get currentRoutine(): string {
+    return this._currentRoutine;
+  }
+  public set currentRoutine(value: string) {
+    this._currentRoutine = value;
   }
 }
