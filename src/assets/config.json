@@ -3,9 +3,9 @@
     "cognitoClientSecret": "1g272nvlcpcnj28rtrj1d12jrftu4v70c1bbo50vaa6l5rofngc",
     "cognitoTokenURL": "https://auth.nakultalwar.com/oauth2/token",
     "cognitoUserInfoURL": "https://auth.nakultalwar.com/oauth2/userInfo",
-    "cognitoSignInURL": "https://auth.nakultalwar.com/login?client_id=60jq1jccokrcmocgimovdse8h1&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+profile&redirect_uri=http://localhost:4200/callback",
-    "cognitoLogoutURL": "https://auth.nakultalwar.com/logout?client_id=60jq1jccokrcmocgimovdse8h1&logout_uri=http://localhost:4200/logout",
+    "cognitoSignInURL": "https://auth.nakultalwar.com/login?client_id=60jq1jccokrcmocgimovdse8h1&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+profile&redirect_uri=http://gymtrackr.nakultalwar.com/callback",
+    "cognitoLogoutURL": "https://auth.nakultalwar.com/logout?client_id=60jq1jccokrcmocgimovdse8h1&logout_uri=http://gymtrackr.nakultalwar.com/logout",
     "apiGatewayURL": "https://api.nakultalwar.com/gymtrackr/",
-    "redirectURL": "http://localhost:4200/callback",
+    "redirectURL": "http://gymtrackr.nakultalwar.com/callback",
     "refreshTokenValidity": 1209600000
 }
