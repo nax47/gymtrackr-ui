@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import config from '../../assets/config.json'
 import { AuthResponse } from '../models/auth-response';
 import { UserInfoResponse } from '../models/user-info-response';
+import { LogoutResponse } from '../logout-response';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,20 @@ export class TokenService {
                     .set('code', authCode)
                     .set('grant_type', 'authorization_code')
                     .set('client_id', config.cognitoClientId)
-                    .set('redirect_uri', 'http://localhost:4200/callback');
+                    .set('redirect_uri', config.redirectURL);
+
+    return this.http.post<AuthResponse>(config.cognitoTokenURL, body, 
+                                        {headers: new HttpHeaders()
+                                                      .set('Authorization', 'Basic '+btoa(config.cognitoClientId+":"+config.cognitoClientSecret)),
+                                          observe: 'response'});
+  }
+
+  refreshToken(refreshToken: string): Observable<HttpResponse<AuthResponse>>{
+    
+    const body = new HttpParams()
+                    .set('grant_type', 'refresh_token')
+                    .set('client_id', config.cognitoClientId)
+                    .set('refresh_token', refreshToken);
 
     return this.http.post<AuthResponse>(config.cognitoTokenURL, body, 
                                         {headers: new HttpHeaders()
@@ -32,5 +46,5 @@ export class TokenService {
                     .set('Authorization', 'Bearer '+accessToken),
         observe: 'response'});
   }
-
+  
 }

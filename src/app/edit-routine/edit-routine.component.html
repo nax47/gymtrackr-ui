@@ -28,7 +28,7 @@
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: columnNames;" (click)="exerciseClick(row)"></mat-row>
+                <mat-row *matRowDef="let row; columns: columnNames; let i=index" (click)="exerciseClick(row, i)"></mat-row>
 
             </mat-table>
             <br>

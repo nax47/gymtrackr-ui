@@ -3,8 +3,10 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExerciseList } from '../exercise-list';
 import { Item } from '../models/item';
+import { RefreshAuthService } from '../refresh-auth.service';
 import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-new-routine',
@@ -13,9 +15,10 @@ import { BackendService } from '../services/backend.service';
 })
 export class NewRoutineComponent implements OnInit {
 
-  constructor(private router: Router, public appData: AppDataService, private formBuilder: FormBuilder, private backendService: BackendService) { }
+  constructor(private router: Router, public appData: AppDataService, private refreshAuthService: RefreshAuthService, private formBuilder: FormBuilder, private backendService: BackendService) { }
 
   ngOnInit(): void {
+    if(!this.appData.isLoggedIn) { this.router.navigateByUrl("");}
     if(!this.appData.isCreatingNewRoutine) { this.router.navigateByUrl("/track");}
   }
 
@@ -36,7 +39,7 @@ export class NewRoutineComponent implements OnInit {
     this.exerciseArray.removeAt(i);
   }
 
-  saveRoutine(){
+  createRoutine(){
     const exerciseList = this.appData.newRoutineForm.get('exercises').value;
     var exerciseArr = [];
     exerciseList.forEach(exercise => exerciseArr.push({name: exercise.name, weight: 0}));
@@ -46,12 +49,22 @@ export class NewRoutineComponent implements OnInit {
       email_id: this.appData.email,
       exercises: exerciseArr
     }
-    console.log(item);
     this.backendService.createRoutine(item, this.appData.accessToken)
-    .subscribe((response) => {
-      console.log(response.status);
-      this.router.navigateByUrl("/track");
-    });
+    .subscribe(
+      (response) => {
+        this.appData.isCreatingNewRoutine = false;
+        this.router.navigateByUrl("/track");
+      },
+      (error) => {
+        console.log(error.status);
+        if(error.status == 401){
+          this.refreshAuthService.refreshToken();
+          this.createRoutine();
+        }
+      }
+    );
   }
+
+
 
 }

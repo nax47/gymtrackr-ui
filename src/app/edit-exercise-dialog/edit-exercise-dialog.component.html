@@ -1,0 +1,15 @@
+<h3>Edit weight for {{name}}</h3>
+
+<mat-dialog-content [formGroup]="exerciseWeightForm">
+    <mat-form-field>
+        <input type = "number" matInput placeholder="Weight" formControlName="weight">
+        <mat-error *ngIf="editedWeight.invalid && editedWeight.touched">
+            Please enter a weight
+        </mat-error>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="editedWeight.invalid" (click)="saveRoutine()">Save</button>
+</mat-dialog-actions>

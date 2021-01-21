@@ -29,11 +29,16 @@ export class CallbackComponent implements OnInit {
         const keys = response.headers.keys();
         this.headers = keys.map(key =>
           '${key}: ${response.headers.get(key)}');
-
+        
+        const currentTime = Date.now();
         this.appData.accessToken = response.body.access_token;
         this.appData.refreshToken = response.body.refresh_token;
-        this.appData.tokenExpiry = response.body.expires_in;
+        this.appData.issueTime = currentTime;
         
+        localStorage.setItem("accessToken", response.body.access_token);
+        localStorage.setItem("refreshToken", response.body.refresh_token);
+        localStorage.setItem("issueTime", currentTime.toString());
+
         this.appData.isLoggedIn = true;
 
         this.getUserInfo();
@@ -61,11 +66,27 @@ export class CallbackComponent implements OnInit {
         const keys = response.headers.keys();
         this.headers = keys.map(key =>
           '${key}: ${response.headers.get(key)}');
+        
+        // Users signed up through Cognito directly store name in "name" field instead of "given_name"
+        if(response.body.given_name == null){
+          var firstName = "";
+          
+          //Parsing "name" string to get first name if user entered full name during sign up
+          if(response.body.name.includes(" ")){ firstName = response.body.name.slice(0,response.body.name.indexOf(" ")); }
+          else{ firstName = response.body.name; }
 
-        this.appData.givenName = response.body.given_name;
+          this.appData.givenName = firstName
+          localStorage.setItem("givenName", firstName);
+        }
+        else{
+          this.appData.givenName = response.body.given_name;
+          localStorage.setItem("givenName", response.body.given_name);
+        }
         this.appData.email = response.body.email;
-        //this.appData.picture = response.body.picture;
-        //this.imageUrl = URL.createObjectURL(this.appData.picture);
+        
+        
+        localStorage.setItem("email", response.body.email);
+
         this.router.navigateByUrl("/track");
     });
   }

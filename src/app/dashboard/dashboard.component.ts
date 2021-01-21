@@ -5,6 +5,8 @@ import { NewRoutineDialogComponent } from '../new-routine-dialog/new-routine-dia
 import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TokenService } from '../services/token.service';
+import { RefreshAuthService } from '../refresh-auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,49 +16,64 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DashboardComponent implements OnInit {
 
   title = 'GymTrackr';
-  private headers: any;
 
-  constructor(private router: Router, public appData: AppDataService, private backendService: BackendService, private formBuilder: FormBuilder, private dialog: MatDialog) { }
+  constructor(private router: Router, public appData: AppDataService, private refreshAuthService: RefreshAuthService, private backendService: BackendService, private formBuilder: FormBuilder, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if(!this.appData.isLoggedIn) { this.router.navigateByUrl("");}
+    this.getRoutines();
+  }
 
+  getRoutines(): void{
     this.appData.routineList = [];
     this.appData.isLoading = true;
     this.backendService.getRoutines(this.appData.email, this.appData.accessToken)
-    .subscribe((response) => {
-      const keys = response.headers.keys();
-      this.headers = keys.map(key =>
-          '${key}: ${response.headers.get(key)}');
-
-      if(response.body.Count > 0){
-        this.appData.hasRoutines = true;
-        for(let item of response.body.Items){
-          this.appData.routineList.push(item.workout_id);
+    .subscribe(
+      (response) => {
+        if(response.body.Count > 0){
+          this.appData.hasRoutines = true;
+          for(let item of response.body.Items){
+            this.appData.routineList.push(item.workout_id);
+          }
+        }
+        else{
+          this.appData.hasRoutines = false;
+        }
+        this.appData.isLoading = false;
+      },
+      (error) => {
+        console.log(error.status);
+        if(error.status == 401){
+          this.refreshAuthService.refreshToken();
+          this.getRoutines();
         }
       }
-      else{
-        this.appData.hasRoutines = false;
-      }
-      this.appData.isLoading = false;
-    });
-    /////////
+    );
   }
 
   routineClick(routine: string): void{
-    this.appData.isLoading = true;
-
-    this.backendService.getRoutine(this.appData.email,routine,this.appData.accessToken)
-    .subscribe((response) => {
-      const keys = response.headers.keys();
-      this.headers = keys.map(key =>
-          '${key}: ${response.headers.get(key)}');
-      this.appData.currentRoutine = response.body.Item.workout_id;
-      this.appData.exerciseList = response.body.Item.exercises;
-      this.appData.isLoading = false;
-    });
-    
+    this.getRoutine(routine);
+    this.appData.isEditingRoutine = true;
     this.router.navigateByUrl("/track/edit");
+  }
+
+  getRoutine(routine: string): void{
+    this.appData.isLoading = true;
+    this.backendService.getRoutine(this.appData.email,routine,this.appData.accessToken)
+    .subscribe(
+      (response) => {
+        this.appData.currentRoutine = response.body.Item.workout_id;
+        this.appData.exerciseList = response.body.Item.exercises;
+        this.appData.isLoading = false;
+      },
+      (error) => {
+        console.log(error.status);
+        if(error.status == 401){
+          this.refreshAuthService.refreshToken();
+          this.getRoutine(routine);
+        }
+      }
+    );
   }
 
   openDialog(): void{

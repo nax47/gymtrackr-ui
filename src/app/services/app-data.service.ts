@@ -9,7 +9,7 @@ export class AppDataService {
 
   private _accessToken: string;
   private _refreshToken: string;
-  private _tokenExpiry: number;
+  private _issueTime: number;
 
   private _isLoggedIn: boolean;
   private _givenName: string;
@@ -25,6 +25,7 @@ export class AppDataService {
 
   private _exerciseList: any[];
   private _currentRoutine: string;
+  private _isEditingRoutine: boolean;
 
   constructor() { }
 
@@ -42,11 +43,11 @@ export class AppDataService {
     this._refreshToken = value;
   }
 
-  public get tokenExpiry(): number {
-    return this._tokenExpiry;
+  public get issueTime(): number {
+    return this._issueTime;
   }
-  public set tokenExpiry(value: number) {
-    this._tokenExpiry = value;
+  public set issueTime(value: number) {
+    this._issueTime = value;
   }
 
   public get isLoggedIn(): boolean {
@@ -124,5 +125,12 @@ export class AppDataService {
   }
   public set currentRoutine(value: string) {
     this._currentRoutine = value;
+  }
+
+  public get isEditingRoutine(): boolean {
+    return this._isEditingRoutine;
+  }
+  public set isEditingRoutine(value: boolean) {
+    this._isEditingRoutine = value;
   }
 }

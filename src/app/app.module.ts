@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewRoutineDialogComponent } from './new-routine-dialog/new-routine-dialog.component';
 import { NewRoutineComponent } from './new-routine/new-routine.component';
 import { EditRoutineComponent } from './edit-routine/edit-routine.component';
+import { DeleteRoutineDialogComponent } from './delete-routine-dialog/delete-routine-dialog.component';
+import { EditExerciseDialogComponent } from './edit-exercise-dialog/edit-exercise-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { EditRoutineComponent } from './edit-routine/edit-routine.component';
     CallbackComponent,
     NewRoutineDialogComponent,
     NewRoutineComponent,
-    EditRoutineComponent
+    EditRoutineComponent,
+    DeleteRoutineDialogComponent,
+    EditExerciseDialogComponent
   ],
   imports: [
     BrowserModule,

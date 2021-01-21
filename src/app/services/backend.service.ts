@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import config from '../../assets/config.json'
-import { AuthResponse } from '../models/auth-response';
-import { UserInfoResponse } from '../models/user-info-response';
 import { GetRoutinesResponse } from '../models/get-routines-response';
 import { Item } from '../models/item';
 import { GetRoutineResponse } from '../models/get-routine-response';
 import { CreateRoutineResponse } from '../models/create-routine-response';
+import { DeleteRoutineResponse } from '../delete-routine-response';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +40,14 @@ export class BackendService {
                     .set('Authorization', 'Bearer '+accessToken),
         observe: 'response'});
   }
-
+  
+  deleteRoutine(emailId: string, workoutId: string, accessToken: string): Observable<HttpResponse<DeleteRoutineResponse>>{
+    return this.http.delete<DeleteRoutineResponse>(config.apiGatewayURL+'routine', 
+      {headers: new HttpHeaders()
+                    .set('Authorization', 'Bearer '+accessToken),
+        params: new HttpParams()
+                    .set('id', btoa(emailId))
+                    .set('workout', btoa(workoutId)),
+        observe: 'response'});
+  }
 }
