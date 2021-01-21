@@ -6,7 +6,7 @@ import { GetRoutinesResponse } from '../models/get-routines-response';
 import { Item } from '../models/item';
 import { GetRoutineResponse } from '../models/get-routine-response';
 import { CreateRoutineResponse } from '../models/create-routine-response';
-import { DeleteRoutineResponse } from '../delete-routine-response';
+import { DeleteRoutineResponse } from '../models/delete-routine-response';
 
 @Injectable({
   providedIn: 'root'

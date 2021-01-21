@@ -1,4 +1,3 @@
-import { ExerciseList } from "../exercise-list";
 
 export interface Item {
     workout_id: string;

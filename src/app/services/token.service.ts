@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import config from '../../assets/config.json'
 import { AuthResponse } from '../models/auth-response';
 import { UserInfoResponse } from '../models/user-info-response';
-import { LogoutResponse } from '../logout-response';
+import { LogoutResponse } from '../models/logout-response';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AppDataService } from './services/app-data.service';
-import { TokenService } from './services/token.service';
+import { AppDataService } from '../services/app-data.service';
+import { TokenService } from '../services/token.service';
 
 @Injectable({
   providedIn: 'root'

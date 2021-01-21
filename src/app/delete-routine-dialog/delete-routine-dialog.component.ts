@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { RefreshAuthService } from '../refresh-auth.service';
+import { RefreshAuthService } from '../services/refresh-auth.service';
 import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
 

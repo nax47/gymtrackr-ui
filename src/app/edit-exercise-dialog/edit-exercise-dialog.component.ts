@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Item } from '../models/item';
-import { RefreshAuthService } from '../refresh-auth.service';
+import { RefreshAuthService } from '../services/refresh-auth.service';
 import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
 

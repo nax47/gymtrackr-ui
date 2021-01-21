@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ExerciseList } from '../exercise-list';
 import { Item } from '../models/item';
-import { RefreshAuthService } from '../refresh-auth.service';
+import { RefreshAuthService } from '../services/refresh-auth.service';
 import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
 import { TokenService } from '../services/token.service';

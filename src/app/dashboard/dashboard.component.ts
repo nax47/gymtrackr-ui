@@ -6,7 +6,7 @@ import { AppDataService } from '../services/app-data.service';
 import { BackendService } from '../services/backend.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from '../services/token.service';
-import { RefreshAuthService } from '../refresh-auth.service';
+import { RefreshAuthService } from '../services/refresh-auth.service';
 
 @Component({
   selector: 'app-dashboard',
